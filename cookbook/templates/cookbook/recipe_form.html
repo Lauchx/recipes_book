@@ -1,0 +1,39 @@
+{% extends "cookbook/base.html" %} 
+{# La ruta al template padre debe ser correcta #}
+
+{% block title %}
+{% if form.instance.pk %}
+{# Lógica opcional para cambiar el título si es una edición (Update) #}
+Editar Receta
+{% else %}
+Crear Receta
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+    
+    <h1>Crear Nueva Receta</h1>
+    
+    {# 1. Inicio del formulario con método POST #}
+    <form method="post">
+        
+        {# 2. Token de seguridad obligatorio de Django #}
+        {% csrf_token %} 
+        
+        {# 3. Presentación de los campos del formulario #}
+        {# La variable 'form' contiene todos los campos definidos en RecipeForm #}
+        <table class="table table-sm"> 
+            {{ form.as_table }} 
+            {# Alternativas: {{ form.as_p }} o {{ form.as_ul }} #}
+        </table>
+        
+        {# Botones de acción con utilidades de Bootstrap [5, 6] #}
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Guardar Receta</button>
+            
+            {# Enlace para cancelar y volver a la lista #}
+            <a href="{% url 'base' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+    
+{% endblock content %}

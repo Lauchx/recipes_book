@@ -1,0 +1,44 @@
+{% extends "cookbook/base.html" %}
+
+<!-- Título específico de la página -->
+{% block title %}
+{{ recipe.titulo }} | Detalle de Receta
+{% endblock title %}
+
+<!-- Bloque de contenido principal -->
+{% block content %}
+    <article class="card">
+    <div class="card-body">
+        
+
+        <h1 class="card-title">{{ recipe.title }}</h1>
+        
+        <h3 class="text-muted">Publicado el día {{ recipe.updated_at|date:"d/m/Y H:i" }} por {{recipe.author_id}}</h3>
+
+        <p class="card-text">{{ recipe.description|linebreaks }}</p>
+        
+
+        <ul>
+            <li>Título: {{ recipe.title }}</li>
+            <li>Instrucciones: {{ recipe.instructions }}</li>
+            <li>Ingredientes: {{ recipe.ingredients }}</li>
+            <li>Tiempo de preparación: {{ recipe.ingredients }}</li>
+            <li>Tiempo de cocción: {{ recipe.ingredients }}</li>
+            <li>Tiempo de cocción: {{ recipe.ingredients }}</li>
+            <li>Porciones: {{ recipe.ingredients }}</li>
+        </ul>
+        
+        <!-- Opcional: Mostrar autor si tiene (usando el patrón de Noticias) -->
+        {% if recipe.autor and recipe.autor.profile.avatar_url %}
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <img src="{{ recipe.autor.profile.avatar_url }}" style="height:40px;width:40px;border-radius:50%;object-fit:cover;">
+            <strong>{{ recipe.autor.get_username }}</strong>
+        </div>
+        {% endif %}
+
+        <a href="{% url 'base' %}" class="btn btn-secondary mt-3">Volver a la lista de recetas</a>
+        
+    </div>
+</article>
+
+{% endblock content %}
