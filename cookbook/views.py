@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, DeleteView
 from cookbook.forms import RecipeForm
 from cookbook.models import Recipe
 
@@ -16,6 +16,10 @@ class RecipeCreateView(CreateView):
     model = Recipe
     form_class = RecipeForm 
     success_url = reverse_lazy('base') 
+
+class RecipeDeleteView(DeleteView):
+    model = Recipe
+    success_url = reverse_lazy('blog:post_list') [5] # cambiar
 
 class RecipeDetailView(DetailView):
     model = Recipe 
