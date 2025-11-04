@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'NunitoSans'; /* <-- 1. Invétale un nombre para usarla */
+  src: url('/static/cookbook/fonts/NunitoSans-Italic.ttf'); /* <-- 2. Apunta al archivo */
+}
+/* En tu style.css (debajo del @font-face) */
+
+body {
+  font-family: 'NunitoSans', sans-serif; /* <-- 3. ¡Úsala aquí! */
+}
+
+.navbar .nav-link {
+    transition: all 0.3s ease-in-out;
+    margin-right: 8px;
+    outline: none;
+}
+
+.navbar .nav-link:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:focus {
+    background-color: #00ffcc8a;
+    border-radius: 5px;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.list-group .list-group-item{
+    border: 0PX;
+    background-color: #0dcaf0;
+    color: black;
+}
+.list-group-item:hover{
+    background-color: #5ee4ff ;
+}
+li strong{
+    background: #178095;
+}

@@ -2,7 +2,7 @@
 
 <!-- Título específico de la página -->
 {% block title %}
-{{ recipe.titulo }} | Detalle de Receta
+{{ recipe.title }} | Detalle de Receta
 {% endblock title %}
 
 <!-- Bloque de contenido principal -->
@@ -10,23 +10,42 @@
 <article class="card border-0">
     <div class="card-body bg-dark text-white">
 
+        <h3 class="h5 mb-3">Publicado el día {{ recipe.updated_at|date:"d/m/Y H:i" }} por {{recipe.author.get_username}}
+        </h3>
 
-        <h1 class="card-title text-info">{{ recipe.title }}</h1>
+        <ul class="list-group mt-4">
 
-        <h3 class="">Publicado el día {{ recipe.updated_at|date:"d/m/Y H:i" }} por {{recipe.author.get_username}}</h3>
+            <li class="list-group-item active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <h3 class="mb-1 flex-grow-1 text-center">{{ recipe.title }}</h3>
+                    <small>{{ recipe.updated_at|date:"d/m/Y" }}</small>
+                </div>
+            </li>
 
-        <p class="card-text">{{ recipe.description|linebreaks }}</p>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong class="rounded-pill p-2">Tiempo de preparación:</strong>
+                <span class="badge bg-primary text-dark rounded-pill">{{ recipe.preparation_time }} min</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong class="rounded-pill p-2">Tiempo de cocción:</strong>
+                <span class="badge bg-primary text-dark rounded-pill">{{ recipe.cooking_time }} min</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong class="rounded-pill p-2">Porciones:</strong>
+                <span class="badge bg-primary text-dark rounded-pill">{{ recipe.servings }}</span>
+            </li>
 
+            <li class="list-group-item">
+                <strong class="rounded-pill p-2">Ingredientes:</strong>
+                <p class="mb-0">{{ recipe.ingredients}}</p>
+            </li>
+            <li class="list-group-item">
+                <strong class="rounded-pill p-2">Instrucciones:</strong>
+                <p class="mb-0">{{ recipe.instructions }}</p>
+            </li>
 
-        <ul class="text-info h-10">
-            <li><strong>Título:</strong> {{ recipe.title }}</li>
-            <li><strong>Instrucciones:</strong> {{ recipe.instructions }}</li>
-            <li><strong>Ingredientes:</strong> {{ recipe.ingredients }}</li>
-            <li><strong>Tiempo de preparación:</strong> {{ recipe.ingredients }}</li>
-            <li><strong>Tiempo de cocción:</strong> {{ recipe.ingredients }}</li>
-            <li><strong>Tiempo de cocción:</strong> {{ recipe.ingredients }}</li>
-            <li><strong>Porciones:</strong> {{ recipe.ingredients }}</li>
         </ul>
+
 
         <!-- Opcional: Mostrar autor si tiene (usando el patrón de Noticias) -->
         {% if recipe.autor and recipe.autor.profile.avatar_url %}
@@ -36,9 +55,10 @@
             <strong>{{ recipe.autor.get_username }}</strong>
         </div>
         {% endif %}
-
-        <a href="{% url 'base' %}" class="btn btn-secondary mt-3">Volver a la lista de recetas</a>
-
+        <div class="mt-3">
+            <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'base' %}" class="btn btn-outline-secondary">Volver a la lista de recetas</a>
+        </div>
     </div>
 </article>
 

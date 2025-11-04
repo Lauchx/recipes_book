@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +6,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'cookbook/style.css' %}"/>
   <title>Libro de Recetas</title>
 </head>
 
 <body class="bg-dark text-white">
-  <nav class="navbar navbar-expand-lg bg-info mb-4">
+  <nav class="navbar navbar-expand-lg bg-info mb-4 mr-6">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'base' %}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fork-knife"
@@ -20,12 +22,14 @@
         </svg>
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href={% url 'base' %}>Inicio</a>
+        <ul class="navbar-nav ">
+          <li class="nav-item  ">
+            {% url 'base' as base_url %}
+            <a class="nav-link {% if request.path == base_url %}active{% endif %}" aria-current="page" href={% url 'base' %}>Inicio</a>
           </li>
+          {% url 'recipe_create' as create_url %}
           <li class="nav-item">
-            <a href="{% url 'recipe_create' %}" class="nav-link">Crear Receta</a>
+            <a class="nav-link {% if request.path == create_url %}active {% endif %}" href="{% url 'recipe_create' %}">Crear Receta</a>
 
           </li>
         </ul>
@@ -33,7 +37,7 @@
     </div>
   </nav>
 
-  <h1>Recetas Guardadas:</h1>
+  <h1 class="align-items-center justify-content-between">Recetas Guardadas:</h1>
 
   <div class="container">
     {% block content %} {% include 'cookbook/recipes_grid.html' %}{%endblock%}
