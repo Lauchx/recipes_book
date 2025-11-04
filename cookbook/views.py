@@ -19,7 +19,8 @@ class RecipeCreateView(CreateView):
 
 class RecipeDeleteView(DeleteView):
     model = Recipe
-    success_url = reverse_lazy('blog:post_list') [5] # cambiar
+    context_object_name = "recipe" 
+    success_url = reverse_lazy('base') 
 
 class RecipeDetailView(DetailView):
     model = Recipe 

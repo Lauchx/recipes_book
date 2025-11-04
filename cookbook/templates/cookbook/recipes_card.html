@@ -1,7 +1,10 @@
-<div class="card" style="width: 18rem">
-  <div class="card-body">
+<div class="card h-100">
+  <div class="card-body bg-secondary text-white rounded border border-secondary d-flex flex-column">
     <h5 class="card-title">{{ recipe.title }}</h5>
     <p class="card-text">{{ recipe.description }}</p>
-    <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-primary">Ver Receta</a>
+    <div class="mt-auto">
+      <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-danger">Eliminar</a>
+      <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-primary">Ver Receta</a>
+    </div>
   </div>
 </div>

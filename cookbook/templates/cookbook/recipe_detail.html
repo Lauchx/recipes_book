@@ -7,25 +7,25 @@
 
 <!-- Bloque de contenido principal -->
 {% block content %}
-<article class="card">
-    <div class="card-body">
+<article class="card border-0">
+    <div class="card-body bg-dark text-white">
 
 
-        <h1 class="card-title">{{ recipe.title }}</h1>
+        <h1 class="card-title text-info">{{ recipe.title }}</h1>
 
-        <h3 class="text-muted">Publicado el día {{ recipe.updated_at|date:"d/m/Y H:i" }} por {{recipe.author_id}}</h3>
+        <h3 class="">Publicado el día {{ recipe.updated_at|date:"d/m/Y H:i" }} por {{recipe.author.get_username}}</h3>
 
         <p class="card-text">{{ recipe.description|linebreaks }}</p>
 
 
-        <ul>
-            <li>Título: {{ recipe.title }}</li>
-            <li>Instrucciones: {{ recipe.instructions }}</li>
-            <li>Ingredientes: {{ recipe.ingredients }}</li>
-            <li>Tiempo de preparación: {{ recipe.ingredients }}</li>
-            <li>Tiempo de cocción: {{ recipe.ingredients }}</li>
-            <li>Tiempo de cocción: {{ recipe.ingredients }}</li>
-            <li>Porciones: {{ recipe.ingredients }}</li>
+        <ul class="text-info h-10">
+            <li><strong>Título:</strong> {{ recipe.title }}</li>
+            <li><strong>Instrucciones:</strong> {{ recipe.instructions }}</li>
+            <li><strong>Ingredientes:</strong> {{ recipe.ingredients }}</li>
+            <li><strong>Tiempo de preparación:</strong> {{ recipe.ingredients }}</li>
+            <li><strong>Tiempo de cocción:</strong> {{ recipe.ingredients }}</li>
+            <li><strong>Tiempo de cocción:</strong> {{ recipe.ingredients }}</li>
+            <li><strong>Porciones:</strong> {{ recipe.ingredients }}</li>
         </ul>
 
         <!-- Opcional: Mostrar autor si tiene (usando el patrón de Noticias) -->

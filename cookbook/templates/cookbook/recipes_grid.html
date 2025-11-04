@@ -1,5 +1,7 @@
-{%for recipe in recipes%}
-<div class="col-12 col-md-4 mb-4">
-  {% include 'cookbook/recipes_card.html' %}
+<div class="row g-4">
+  {%for recipe in recipes reversed%}
+  <div class="col-12 col-md-4">
+    {% include 'cookbook/recipes_card.html' %}
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}

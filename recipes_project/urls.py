@@ -24,4 +24,5 @@ urlpatterns = [
     path('', cookbook.views.create, name='base'),
     path('receta/<int:pk>/', cookbook.views.RecipeDetailView.as_view(), name='recipe_detail'),
     path('receta/crear/', cookbook.views.RecipeCreateView.as_view(), name='recipe_create'),
+    path('receta/delete/<int:pk>/', cookbook.views.RecipeDeleteView.as_view(), name='recipe_delete'),
 ]
