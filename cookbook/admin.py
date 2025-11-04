@@ -3,5 +3,4 @@ from cookbook.models import Recipe
 # Register your models here.
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    # 'pass' es suficiente si no se requiere personalización.
     pass
