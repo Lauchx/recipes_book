@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-$env:DATABASE_URL = "postgresql://db_cookbook_user:m1FpzxAJWNE8rTox3yldMcL4NKt1bLiG@dpg-d45727i4d50c73fjg790-a.oregon-postgres.render.com/db_cookbook?sslmode=require"
 
 
 def main():
